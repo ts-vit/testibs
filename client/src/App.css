@@ -1,3 +1,8 @@
+.App {
+    margin-right: 30px;
+    margin-left: 30px;
+}
+
 .header {
     margin-bottom: 20px;
 }
@@ -9,5 +14,7 @@
 .control-button {
     margin-right: 20px;
 }
+
+
 
 

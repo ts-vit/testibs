@@ -252,7 +252,7 @@ class App extends React.Component {
                             className="control-button">Удалить</Button>
                 </div>
                 <TableOrders dataSource={tableData}
-                             rowSelection={this.rowSelection}/>
+                             rowSelection={this.rowSelection} classNames="MyTable"/>
 
                 <FormOrder
                     {...fields}

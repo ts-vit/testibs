@@ -51,7 +51,7 @@ public class OrderRestController {
     }
 
     @RequestMapping(value = "/update",
-            method = RequestMethod.POST,
+            method = RequestMethod.PUT,
             produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public ResponseEntity<Order> updateOrder(@RequestBody @Valid Order order, UriComponentsBuilder builder) {
         HttpHeaders headers = new HttpHeaders();

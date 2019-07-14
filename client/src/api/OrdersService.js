@@ -1,22 +1,70 @@
 class OrdersService {
-  _apiBase = `http://localhost:9966/api/v1/orders`;
-  async getResourse(url, config) {
-    const res = await fetch(url);
+    _apiBase = `http://localhost:9966/api/v1/orders`;
 
-    if (!res.ok) {
-      throw new Error(`Ресурсы по адресу ${url} не доступны`);
+    async getData(url) {
+        const res = await fetch(url);
+
+        if (!res.ok) {
+            throw new Error(`Ресурсы по адресу ${url} не доступны`);
+        }
+        return await res.json();
     }
-    return await res.json();
-  }
 
-  async getAllOrders() {
-    const res = await this.getResourse(`${this._apiBase}/all/`);
-    return res;
-  }
+    async postData(url = '', method, data = {}) {
+        const res = await fetch(url, {
+            method: method,
+            mode: 'cors',
+            cache: 'no-cache',
+            credentials: 'same-origin',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            redirect: 'follow',
+            referrer: 'no-referrer',
+            body: JSON.stringify(data),
+        });
+        const bodyRes = await res.json();
+        return bodyRes;
+    }
 
-  getOrder(id) {
-    return this.getResourse(`${this._apiBase}/get/${id}`)
-  }
+    async deleteData(url = '') {
+        const res = await fetch(url, {
+            method: 'DELETE',
+            mode: 'cors',
+            cache: 'no-cache',
+
+        });
+        return res;
+    }
+
+    async getAllOrders() {
+        const res = await this.getData(`${this._apiBase}/all/`);
+        return res;
+    }
+
+    async getOrder(id) {
+        const res = await this.getData(`${this._apiBase}/get/${id}`);
+        return res;
+    }
+
+    async addOrder(data) {
+        const res = await this.postData(`${this._apiBase}/save/`, "POST", data);
+
+        return res;
+
+    }
+
+    async updateOrder(data) {
+        const res = await this.postData(`${this._apiBase}/update/`, "PUT", data);
+        return res;
+    }
+
+    async deleteOrder(id) {
+        const res = await this.deleteData(`${this._apiBase}/delete/${id}`);
+        return res;
+    };
+
+
 }
 
 export default OrdersService;

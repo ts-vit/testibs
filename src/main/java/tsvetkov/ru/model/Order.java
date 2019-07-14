@@ -17,15 +17,15 @@ import javax.persistence.*;
 public class Order extends BaseEntity{
 
 
-    @Column(name = "LAST_NAME")
+    @Column(name = "LAST_NAME", length = 64, nullable = false)
     private String lastName;
 
-    @Column(name = "FIRST_NAME")
+    @Column(name = "FIRST_NAME", length = 64, nullable = false)
     private String firstName;
 
-    @Column(name = "PRODUCT")
+    @Column(name = "PRODUCT", length = 64, nullable = false)
     private String product;
 
-    @Column(name = "QUANTITY")
+    @Column(name = "QUANTITY", nullable = false)
     private int quantity;
 }

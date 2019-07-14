@@ -11,6 +11,7 @@ import tsvetkov.ru.model.Order;
 import tsvetkov.ru.service.OrderService;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -72,7 +73,7 @@ public class OrderRestController {
         if (order == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-         this.orderService.delete(id);
+        this.orderService.delete(id);
 
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
@@ -82,16 +83,12 @@ public class OrderRestController {
         List<Order> orders = this.orderService.getAll();
 
         if (orders.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            List<Order> ordersEmpty = new ArrayList<>();
+            return new ResponseEntity<>(ordersEmpty, HttpStatus.OK);
         }
 
         return new ResponseEntity<>(orders, HttpStatus.OK);
     }
-
-
-
-
-
 
 
 }

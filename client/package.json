@@ -14,6 +14,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
+  "proxy": "http://localhost:9966/api/v1/orders",
   "eslintConfig": {
     "extends": "react-app"
   },

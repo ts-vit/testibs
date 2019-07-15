@@ -1,5 +1,5 @@
 class OrdersService {
-    _apiBase = `http://localhost:9966/api/v1/orders`;
+    //_apiBase = `http://localhost:9966/api/v1/orders`;
 
     async getData(url) {
         const res = await fetch(url);
@@ -38,29 +38,29 @@ class OrdersService {
     }
 
     async getAllOrders() {
-        const res = await this.getData(`${this._apiBase}/all/`);
+        const res = await this.getData(`/all/`);
         return res;
     }
 
     async getOrder(id) {
-        const res = await this.getData(`${this._apiBase}/get/${id}`);
+        const res = await this.getData(`/get/${id}`);
         return res;
     }
 
     async addOrder(data) {
-        const res = await this.postData(`${this._apiBase}/save/`, "POST", data);
+        const res = await this.postData(`/save/`, "POST", data);
 
         return res;
 
     }
 
     async updateOrder(data) {
-        const res = await this.postData(`${this._apiBase}/update/`, "PUT", data);
+        const res = await this.postData(`/update/`, "PUT", data);
         return res;
     }
 
     async deleteOrder(id) {
-        const res = await this.deleteData(`${this._apiBase}/delete/${id}`);
+        const res = await this.deleteData(`/delete/${id}`);
         return res;
     };
 

@@ -17,11 +17,13 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/orders/")
+@CrossOrigin(origins = "http://localhost:9966", maxAge = 3600)
 public class OrderRestController {
 
     @Autowired
     OrderService orderService;
 
+    @CrossOrigin
     @RequestMapping(value = "/get/{id}",
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
@@ -36,7 +38,7 @@ public class OrderRestController {
         }
         return new ResponseEntity<>(order, HttpStatus.OK);
     }
-
+    @CrossOrigin
     @RequestMapping(value = "/save",
             method = RequestMethod.POST,
             produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
@@ -50,7 +52,7 @@ public class OrderRestController {
 
         return new ResponseEntity<>(order, headers, HttpStatus.CREATED);
     }
-
+    @CrossOrigin
     @RequestMapping(value = "/update",
             method = RequestMethod.PUT,
             produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
@@ -64,7 +66,7 @@ public class OrderRestController {
 
         return new ResponseEntity<>(order, headers, HttpStatus.CREATED);
     }
-
+    @CrossOrigin
     @RequestMapping(value = "/delete/{id}",
             method = RequestMethod.DELETE,
             produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
@@ -77,7 +79,7 @@ public class OrderRestController {
 
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
-
+    @CrossOrigin
     @RequestMapping(value = "/all", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public ResponseEntity<List<Order>> getAllOrders() {
         List<Order> orders = this.orderService.getAll();
